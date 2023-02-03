@@ -1,3 +1,4 @@
+// Write your code here.
 import './index.css'
 import {Component} from 'react'
 import ThumbnailItem from '../ThumbnailItem'
@@ -73,8 +74,6 @@ const imagesList = [
   },
 ]
 
-// Write your code here.
-
 class Gallery extends Component {
   state = {
     selectedImageId: 0,
@@ -86,22 +85,23 @@ class Gallery extends Component {
   }
 
   renderSelectedImage = () => {
-    const {photosData} = this.props
+    // eslint-disable-next-line no-shadow
+    const {imagesList} = this.props
     const {selectedImageId} = this.state
-    const {imageUrl, imageAltText} = photosData[selectedImageId]
+    const {imageUrl, imageAltText} = imagesList[selectedImageId]
     return <img src={imageUrl} className="image" alt={imageAltText} />
   }
   /* main render application  */
 
   render() {
-    const {photosData} = this.props
+    const {imagesList} = this.props
     const {selectedImageId} = this.state
     return (
       <div className="app-container">
         <div className="container">
           {this.renderSelectedImage()}
           <ThumbnailItem
-            photosData={photosData}
+            imagesList={imagesList}
             selectedImageId={selectedImageId}
             onClickUpdateId={this.updateSelectedImageId}
           />

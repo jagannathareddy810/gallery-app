@@ -1,24 +1,20 @@
-// Write your code here.
 import './index.css'
 import {Component} from 'react'
 
 class ThumbnailItem extends Component {
   renderThumbnails = () => {
-    const {photosData, onClickUpdateId, selectedImageId} = this.props
+    const {imagesList, onClickUpdateId, selectedImageId} = this.props
     /* to iterate over each item in photosData we use Map  */
-
-    return photosData.map(eachItem => {
+    return imagesList.map(eachItem => {
       const {thumbnailUrl, id, thumbnailAltText} = eachItem
       /* to change the image ud in the index.js gallery */
       const onClickThumbnail = () => {
         onClickUpdateId(id)
       }
-
       /* to change image look if image is selected or not selected */
       const buttonName =
         id === selectedImageId ? 'selected-list-item' : 'list-item'
       /* code for each thumbnail image  */
-
       return (
         <li key={id} className={buttonName} onClick={onClickThumbnail}>
           <img
